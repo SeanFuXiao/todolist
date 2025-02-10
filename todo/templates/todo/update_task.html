@@ -1,38 +1,27 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
     <title>Edit Task</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Edit Task</h1>
-      <form method="post">
-        {% csrf_token %}
-        <input type="text" name="title" value="{{ task.title }}" required />
-        <textarea name="description">{{ task.description }}</textarea>
-        <label class="task-complete-label">
-          <input
-            type="checkbox"
-            name="completed"
-            {%
-            if
-            task.completed
-            %}checked{%
-            endif
-            %}
-          />
-          Mark as Completed
-        </label>
-        <button type="submit" class="submit-btn">Save Changes</button>
-        <a href="{% url 'index' %}" class="btn cancel-btn">Cancel</a>
-      </form>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container task-card">
+        <h1>Edit Task</h1>
+        <form method="post">
+            {% csrf_token %}
+            <h3>Title</h3>
+            <input type="text" name="title" value="{{ task.title }}" required>
+            <h3>Description</h3>
+            <textarea name="description">{{ task.description }}</textarea>
+            <label class="task-complete-label">
+                <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %}>
+                Mark as Completed
+            </label>
+            <button type="submit" class="add-task">Save Changes</button>
+        </form>
+        <a href="{% url 'index' %}" class="delete-btn">Cancel</a>
     </div>
-  </body>
+</body>
 </html>

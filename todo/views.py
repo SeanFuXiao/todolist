@@ -14,7 +14,7 @@ def detail(request, task_id):
     return render(request, 'todo/detail.html', {'task': task})
 
 
-@login_required  # 👈 
+@login_required
 def create_task(request):
     if request.method == 'POST':
         title = request.POST['title']

@@ -1,37 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
     <title>Task Details</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
-  </head>
-  <body>
-    <div class="container task-detail">
-      <h1>Task Details</h1>
-      <h2>{{ task.title }}</h2>
-      <p><strong>Description:</strong> {{ task.description }}</p>
-      <p><strong>Created At:</strong> {{ task.created_at }}</p>
-      <p>
-        <strong>Status:</strong>
-        <span
-          class="task-status {% if task.completed %}completed-status{% else %}not-completed-status{% endif %}"
-        >
-          {% if task.completed %} ✅ Completed {% else %} ⏳ Not Completed {%
-          endif %}
-        </span>
-      </p>
-      <a href="{% url 'update_task' task.id %}" class="btn submit-btn"
-        >✏️ Edit</a
-      >
-      <a href="{% url 'delete_task' task.id %}" class="btn delete-btn"
-        >🗑 Delete</a
-      >
-      <a href="{% url 'index' %}" class="btn cancel-btn">⬅ Back to List</a>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container task-card">
+        <h2>{{ task.title }}</h2>
+        <p><strong>Description:</strong> {{ task.description }}</p>
+        <p><strong>Created At:</strong> {{ task.created_at }}</p>
+        <div class="task-actions">
+            <a href="{% url 'update_task' task.id %}" class="edit-btn">✏️ Edit</a>
+            <a href="{% url 'delete_task' task.id %}" class="delete-btn">🗑 Delete</a>
+        </div>
+        <a href="{% url 'index' %}" class="add-task">⬅ Back</a>
     </div>
-  </body>
+</body>
 </html>

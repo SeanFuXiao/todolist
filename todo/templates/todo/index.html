@@ -1,29 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    {% load static %}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
+<head>
+    <meta charset="UTF-8">
     <title>To-Do List</title>
-  </head>
-  <body>
-    <h1>To-Do List</h1>
-    <a href="{% url 'create_task' %}">➕ Add Task</a>
-    <ul>
-      {% for task in tasks %}
-      <li>
-        <a href="{% url 'detail' task.id %}">{{ task.title }}</a>
-        {% if task.completed %} ✅ {% else %} ⏳ {% endif %}
-        <a href="{% url 'update_task' task.id %}">✏️ Edit</a>
-        <a href="{% url 'delete_task' task.id %}">🗑 Delete</a>
-      </li>
-      {% empty %}
-      <li>No tasks available</li>
-      {% endfor %}
-    </ul>
-  </body>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>📋 To-Do List</h1>
+        <a href="{% url 'create_task' %}" class="add-task">➕ Add Task</a>
+        
+        <div class="task-list">
+            {% for task in tasks %}
+                <div class="task-card">
+                    <a href="{% url 'detail' task.id %}" class="task-title">{{ task.title }}</a>
+                    <p><strong>Description:</strong> {{ task.description }}</p>
+                    <p>
+                        <strong>Status:</strong>
+                        <span class="task-status {% if task.completed %}completed-status{% else %}not-completed-status{% endif %}">
+                            {% if task.completed %} ✅ Completed {% else %} ⏳ Not Completed {% endif %}
+                        </span>
+                    </p>
+                    <div class="task-actions">
+                        <a href="{% url 'update_task' task.id %}" class="edit-btn">Edit</a>
+                        <a href="{% url 'delete_task' task.id %}" class="delete-btn">Delete</a>
+                        
+                    </div>
+                </div>
+            {% empty %}
+                <p>No tasks available</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
 </html>

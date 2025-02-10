@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-  width: 50%;
+  width: 60%;
   margin: auto;
   background: white;
   padding: 20px;
@@ -17,6 +17,139 @@ body {
 
 h1 {
   color: #007bff;
+  margin-bottom: 15px;
+}
+
+.task-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.task-card {
+  background: white;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: 0.3s;
+  border-left: 6px solid #007bff;
+}
+
+.task-card:hover {
+  background: #f8f9fa;
+  transform: scale(1.02);
+}
+
+.task-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.task-title:hover {
+  text-decoration: underline;
+}
+
+.task-status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.completed-status {
+  background-color: #28a745;
+  color: white;
+}
+
+.not-completed-status {
+  background-color: #ffc107;
+  color: white;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button,
+.add-task,
+.edit-btn,
+.delete-btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+}
+
+.add-task {
+  background-color: #007aff;
+  color: white;
+}
+
+.add-task:hover {
+  background-color: #0062cc;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 122, 255, 0.3);
+}
+
+.edit-btn {
+  background-color: #49b9f5;
+  color: black;
+}
+
+.edit-btn:hover {
+  background-color: #234df7;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(255, 204, 0, 0.3);
+}
+
+.delete-btn {
+  background-color: #edbab8;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #ef6f6f;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(255, 59, 48, 0.3);
+}
+
+button,
+.btn-cancel {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+button:hover,
+.btn-cancel:hover {
+  background-color: #d6d6da;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(200, 200, 200, 0.3);
+}
+
+button:active,
+.add-task:active,
+.edit-btn:active,
+.delete-btn:active {
+  transform: scale(0.97);
+  box-shadow: none;
 }
 
 form {
@@ -38,47 +171,4 @@ textarea {
 
 input[type="checkbox"] {
   width: auto;
-}
-
-button,
-.btn {
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  color: white;
-  text-align: center;
-}
-
-.submit-btn {
-  background-color: #007bff;
-}
-
-.submit-btn:hover {
-  background-color: #0056b3;
-}
-.cancel-btn {
-  background-color: #6c757d;
-}
-
-.cancel-btn:hover {
-  background-color: #5a6268;
-}
-
-.delete-btn {
-  background-color: #dc3545;
-}
-
-.delete-btn:hover {
-  background-color: #c82333;
-}
-
-.task-complete-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
 }

@@ -1,25 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Create a New Task</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Create a New Task</h1>
-      <form method="post">
-        {% csrf_token %}
-        <input type="text" name="title" placeholder="Task Title" required />
-        <textarea name="description" placeholder="Task Description"></textarea>
-        <button type="submit" class="submit-btn">Create Task</button>
-        <a href="{% url 'index' %}" class="btn cancel-btn">Cancel</a>
-      </form>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container task-card">
+        <h1>Create a New Task</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Task Title" required>
+            <textarea name="description" placeholder="Task Description"></textarea>
+            <button type="submit" class="add-task">Create Task</button>
+        </form>
+        <a href="{% url 'index' %}" class="delete-btn">Cancel</a>
     </div>
-  </body>
+</body>
 </html>
